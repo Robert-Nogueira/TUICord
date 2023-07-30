@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "tuicord"
+version = "0.1.5"
+description = ""
+authors = ["Robert Nogueira <robertlucasnogueira@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+textual = "^0.29.0"
+discord-py-self = "^2.0.0"
+textual-dev = "^1.0.1"
+python-dotenv = "^1.0.0"
+click = "^8.1.6"
+
+[tool.poetry.scripts]
+tuicord = "tuicord.main:cli"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
