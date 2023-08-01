@@ -12,10 +12,30 @@ from tuicord.utils import consume_history, format_name
 
 class ChannelsTree(Tree):
     def __init__(self, guild: discord.Guild, *args, **kwargs):
+        """
+        The __init__ function is called when the class is instantiated.
+        It sets up the instance of the class, and defines all attributes that
+        will be used by instances of this class.
+
+        :param self: Refer to the current instance of a class
+        :param guild: discord.Guild: Set the guild attribute of the class
+        :param *args: Pass a non-keyword, variable-length argument list to the
+        function
+        :param **kwargs: Pass keyword arguments to the superclass
+        :return: None
+        """
         self.guild = guild
         super().__init__(*args, **kwargs)
 
     def on_mount(self):
+        """
+        The on_mount function is called when the tree is first mounted.
+        It's a good place to add all of your top-level nodes, as well as any
+        other initialization you need to do.
+
+        :param self: Refer to the current instance of a class
+        :return: None
+        """
         for channel in self.guild.channels:
             if channel.type == ChannelType.category:
                 data = {'channel': channel}
@@ -32,6 +52,14 @@ class ChannelsTree(Tree):
 
     @on(Tree.NodeSelected)
     async def on_node_selected(self, event: Tree.NodeSelected):
+        """
+        The on_node_selected function is called when a node in the tree view
+        is selected.
+
+        :param self: Refer to the instance of the class
+        :param event: Tree.NodeSelected: Get the node that was selected
+        :return: None
+        """
         if event.node.is_root:
             return
         channel: discord.TextChannel = event.node.data.get('channel')
