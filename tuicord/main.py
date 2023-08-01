@@ -19,7 +19,7 @@ class TUICord:
 
         :param self: Represent the instance of the class
         :param token: str: Store the token for the bot
-        :return: A DiscordClient object
+        :return: None
         """
         self.discord_client: DiscordClient = DiscordClient()
         self.interface: Interface = Interface(self.discord_client)
@@ -27,10 +27,30 @@ class TUICord:
         self._discord_token: str = token
 
     def run_client(self, loop):
+        """
+        The run_client function is a coroutine that runs the discord client.
+            It takes in a loop as an argument and uses it to run the discord
+            client until completion.
+            The loop is used to run the asyncio event loop, which allows
+            for asynchronous programming.
+
+        :param self: Represent the instance of the class
+        :param loop: Run the client until it is complete
+        :return: None
+        """
         loop.run_until_complete(
             self.discord_client.run(self._discord_token))
 
     def run_interface(self):
+        """
+        The run_interface function is the main function of this program.
+        It starts a new thread that runs the discord client, and then it runs
+        the interface in the main thread. The reason for this is that if we
+        run both on one thread, they will block each other from running.
+
+        :param self: Represent the instance of the class
+        :return: None
+        """
         threading.Thread(
             target=self.run_client,
             args=[asyncio.new_event_loop()],
@@ -44,6 +64,13 @@ class TUICord:
 
 @click.group()
 def cli():
+    """
+    The cli function is the entry point for the command line interface.
+    It takes no arguments and returns nothing.
+
+
+    :return: None
+    """
     pass
 
 
@@ -56,9 +83,12 @@ def cli():
     type=click.STRING,
 )
 def run(token: str) -> None:
-    """ Starts TUICord
+    """
+    The run function is the main function of TUICord. It starts the application
+    and runs it until it is closed by a user.
 
-    :param token: An User token string to be used to connect to the discord
+
+    :param token: str: User discord token
     :return: None
     """
     click.echo(click.style('Starting...', fg='green'))
