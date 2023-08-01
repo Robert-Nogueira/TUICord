@@ -30,7 +30,7 @@ pip install tuicord
 Com isso, o TUICord e suas dependências serão instalados no seu ambiente
 Python.
 
-
+Certifique-se de ter o Python 3.9 ou acima instalado
 ___
 
 ## Uso
