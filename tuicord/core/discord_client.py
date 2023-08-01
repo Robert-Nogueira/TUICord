@@ -29,9 +29,6 @@ class DiscordClient(discord.Client):
         :param self: Represent the instance of the class
         :return: A list of guilds
         """
-        guilds = []
-        for guild in self.guilds:
-            guilds.append(guild)
 
         @self.event
         async def on_message(message: discord.Message):
