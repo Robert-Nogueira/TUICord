@@ -77,19 +77,23 @@ class ChannelsTree(Tree):
                         ListItem(
                             ChannelMessage(
                                 channel,
-                                f'[{message.author.color}] {message.author.name}[/]: {message.content}',
+                                f'[{message.author.color}] '
+                                f'{message.author.name}[/]: {message.content}',
                             )
                         )
                     )
                 message_list_view.index = len(message_list_view) - 2
-            except discord.Forbidden:
+            except discord.Forbidden as exc:
+                permissions: discord.Permissions = channel.permissions_for(
+                    self.guild.me
+                )
                 await message_list_view.append(
                     ListItem(
-                        ChannelMessage(channel, 'Sem permissão para leitura')
+                        ChannelMessage(channel, 'No permissions to read.')
                     )
                 )
             except Exception as error:
                 await message_list_view.append(
-                    ListItem(ChannelMessage(channel, str(error)))
+                    ListItem(ChannelMessage(channel, error.__repr__()))
                 )
             self.app.set_actual_channel(channel)
