@@ -45,6 +45,11 @@ class ServerButton(Button):
         chat = self.app.query('#category-tree').first()
         chat.clear()
         for channel in self.guild.channels:
+            permissions: discord.Permissions = channel.permissions_for(
+                self.guild.me
+            )
+            if not permissions.view_channel or not permissions.read_messages:
+                continue
             if channel.type == ChannelType.category:
                 data = {'channel': channel}
                 category_tree = chat.root.add(
