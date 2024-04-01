@@ -4,8 +4,7 @@ import threading
 import click
 from dotenv import load_dotenv
 
-from tuicord.core import DiscordClient
-from tuicord.core import Interface
+from tuicord.core import DiscordClient, Interface
 
 load_dotenv()
 
@@ -38,8 +37,7 @@ class TUICord:
         :param loop: Run the client until it is complete
         :return: None
         """
-        loop.run_until_complete(
-            self.discord_client.run(self._discord_token))
+        loop.run_until_complete(self.discord_client.run(self._discord_token))
 
     def run_interface(self):
         """
@@ -54,7 +52,7 @@ class TUICord:
         threading.Thread(
             target=self.run_client,
             args=[asyncio.new_event_loop()],
-            daemon=True
+            daemon=True,
         ).start()
         while True:
             if self.discord_client.is_ready():
@@ -62,27 +60,30 @@ class TUICord:
                 break
 
 
-@click.group()
-def cli():
-    """
-    The cli function is the entry point for the command line interface.
-    It takes no arguments and returns nothing.
+# @click.group()
+# def cli():
+#     """
+#     The cli function is the entry point for the command line interface.
+#     It takes no arguments and returns nothing.
+#
+#
+#     :return: None
+#     """
+#     pass
 
 
-    :return: None
-    """
-    pass
-
-
-@cli.command('run')
+@click.command()
 @click.option(
-    '--token', '-t',
+    '--token',
+    '-t',
+    prompt=True,
+    hide_input=True,
     help='User token',
     envvar='DISCORD_TOKEN',
     required=True,
     type=click.STRING,
 )
-def run(token: str) -> None:
+def cli(token: str) -> None:
     """
     The run function is the main function of TUICord. It starts the application
     and runs it until it is closed by a user.

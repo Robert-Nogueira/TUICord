@@ -48,21 +48,29 @@ class DiscordClient(discord.Client):
             if not (self.app.actual_channel and self.app.actual_server):
                 return
             try:
-                if all([
-                    message.guild.id == self.app.actual_server.id,
-                    message.channel.id == self.app.actual_channel.id]
+                if all(
+                    [
+                        message.guild.id == self.app.actual_server.id,
+                        message.channel.id == self.app.actual_channel.id,
+                    ]
                 ):
                     message_list_view: ListView | Widget = self.app.query(
-                        '#message-list').first()
+                        '#message-list'
+                    ).first()
 
-                    await message_list_view.append(ListItem(ChannelMessage(
-                        message.channel,
-                        f'[{message.author.color}] {message.author} [/]: {message.content}',
-                    )))
+                    await message_list_view.append(
+                        ListItem(
+                            ChannelMessage(
+                                message.channel,
+                                f'[{message.author.color}] {message.author} [/]: {message.content}',
+                            )
+                        )
+                    )
                     message_list_view.index = len(message_list_view) - 2
             except Exception as error:
                 message_list_view: Widget = self.app.query(
-                    '#message-list').first()
+                    '#message-list'
+                ).first()
                 await message_list_view.append(
-                    ListItem(ChannelMessage(message.channel,
-                                            str(error))))
+                    ListItem(ChannelMessage(message.channel, str(error)))
+                )

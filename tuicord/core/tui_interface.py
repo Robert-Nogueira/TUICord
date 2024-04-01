@@ -1,9 +1,9 @@
 import discord
 from textual.app import App
-from textual.containers import Horizontal, Vertical, ScrollableContainer
-from textual.widgets import Header, ListView, Footer
+from textual.containers import Horizontal, ScrollableContainer, Vertical
+from textual.widgets import Footer, Header, ListView
 
-from tuicord.components import ServerButton, ChannelsTree
+from tuicord.components import ChannelsTree, ServerButton
 from tuicord.components.input_box import InputBox
 from tuicord.utils import format_name
 
@@ -12,7 +12,7 @@ class Interface(App):
     CSS_PATH = 'styles/style.css'
     BINDINGS = [
         ('t', 'change_theme()', 'Muda o tema!'),
-        ('s', 'exit()', 'Sai da aplicação!')
+        ('s', 'exit()', 'Sai da aplicação!'),
     ]
 
     def __init__(self, client, *args, **kwargs):
@@ -96,13 +96,16 @@ class Interface(App):
                 guilds = [guild for guild in self.client.guilds]
                 first_guild = None
                 for guild in guilds:
-                    tree = ChannelsTree(guild, label='channels',
-                                        id='category-tree', data={})
+                    tree = ChannelsTree(
+                        guild, label='channels', id='category-tree', data={}
+                    )
                     tree.root.expand()
-                    server_button = ServerButton(label=format_name(guild.name),
-                                                 guild=guild,
-                                                 channel_tree=tree,
-                                                 classes='server-button')
+                    server_button = ServerButton(
+                        label=format_name(guild.name),
+                        guild=guild,
+                        channel_tree=tree,
+                        classes='server-button',
+                    )
                     if not first_guild:
                         first_guild = server_button
                         self.set_actual_server(guild)

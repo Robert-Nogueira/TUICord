@@ -42,14 +42,14 @@ class ServerButton(Button):
         button
         :return: None
         """
-        chat = self.app.query(
-            '#category-tree').first()
+        chat = self.app.query('#category-tree').first()
         chat.clear()
         for channel in self.guild.channels:
             if channel.type == ChannelType.category:
                 data = {'channel': channel}
                 category_tree = chat.root.add(
-                    label=f'[blue]{format_name(channel.name)}[/]', data=data)
+                    label=f'[blue]{format_name(channel.name)}[/]', data=data
+                )
                 for category_channel in channel.text_channels:
                     data = {'channel': category_channel}
                     category_tree.add_leaf(category_channel.name, data=data)

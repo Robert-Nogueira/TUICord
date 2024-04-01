@@ -31,5 +31,6 @@ class InputBox(Input):
         discord_client = self.app.client
         asyncio.run_coroutine_threadsafe(
             self.app.actual_channel.send(event.input.value),
-            loop=discord_client.loop)
+            loop=discord_client.loop,
+        )
         event.input.value = ''
