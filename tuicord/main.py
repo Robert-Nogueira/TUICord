@@ -3,6 +3,7 @@ import threading
 
 import click
 from dotenv import load_dotenv
+from rich.status import Status
 
 from tuicord.core import DiscordClient, Interface
 
@@ -37,7 +38,9 @@ class TUICord:
         :param loop: Run the client until it is complete
         :return: None
         """
-        loop.run_until_complete(self.discord_client.run(self._discord_token))
+        loop.run_until_complete(
+            self.discord_client.run(self._discord_token, log_level=50)
+        )
 
     def run_interface(self):
         """
@@ -80,9 +83,9 @@ def cli(token: str) -> None:
     :param token: str: User discord token
     :return: None
     """
-    click.echo(click.style('Starting...', fg='green'))
-    app = TUICord(token)
-    app.run_interface()
+    with Status('Starting...', spinner='point'):
+        app = TUICord(token)
+        app.run_interface()
 
 
 if __name__ == '__main__':
