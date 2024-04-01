@@ -60,18 +60,6 @@ class TUICord:
                 break
 
 
-# @click.group()
-# def cli():
-#     """
-#     The cli function is the entry point for the command line interface.
-#     It takes no arguments and returns nothing.
-#
-#
-#     :return: None
-#     """
-#     pass
-
-
 @click.command()
 @click.option(
     '--token',
