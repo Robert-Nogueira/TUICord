@@ -11,8 +11,8 @@ from tuicord.utils import format_name
 class Interface(App):
     CSS_PATH = 'styles/style.css'
     BINDINGS = [
-        ('t', 'change_theme()', 'Muda o tema!'),
-        ('s', 'exit()', 'Sai da aplicação!'),
+        ('t', 'change_theme()', 'change theme'),
+        ('s', 'exit()', 'left application'),
     ]
 
     def __init__(self, client, *args, **kwargs):
