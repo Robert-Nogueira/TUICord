@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "tuicord"
-version = "0.1.0"
+version = "0.1.5"
 description = ""
 authors = ["Robert Nogueira <robertlucasnogueira@gmail.com>"]
 readme = "README.md"
@@ -8,7 +8,7 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.9"
 textual = "^0.29.0"
-discord-py-self = "^2.0.0"
+discord-py-self = {git = "https://github.com/dolfies/discord.py-self"}
 textual-dev = "^1.0.1"
 python-dotenv = "^1.0.0"
 click = "^8.1.6"
@@ -16,6 +16,14 @@ click = "^8.1.6"
 [tool.poetry.scripts]
 tuicord = "tuicord.main:cli"
 
+
+[tool.poetry.group.dev.dependencies]
+isort = "^5.13.2"
+blue = "^0.9.1"
+taskipy = "^1.12.2"
+
+[tool.taskipy.tasks]
+lint = "blue . && isort ."
 
 [build-system]
 requires = ["poetry-core"]
