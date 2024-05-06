@@ -38,15 +38,12 @@ this will ensure a clean and isolated installation.
 pipx install ./TUICord
 ````
 
-Certifique-se de ter o Python 3.9 ou acima instalado
-
 Make sure you have a Python 3.9 or above and pip (or pipx) installed.
 ___
 
 ## 😎 Basic Use
 
-Para iniciar o TUICord, basta executar o seguinte comando no terminal:
-to start TUICord, just type the command bellow in your console:
+To start TUICord, just type the command bellow in your console:
 
 ````bash
 tuicord run --token Your_ACCOUNT_TOKEN_HERE
