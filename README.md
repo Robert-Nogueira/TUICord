@@ -3,102 +3,124 @@
 [![License](https://img.shields.io/badge/License-MIT-purple.svg)](https://opensource.org/licenses/MIT)
 [![Python Version](https://img.shields.io/badge/python-^3.9-purple)](https://www.python.org/downloads/release/python-390/)
 
-TUICord é uma TUI(Text-based user interface) criada para acessar e utilizar o
-Discord diretamente do seu terminal. Com esta ferramenta, você pode interagir
-com os servidores e canais.
+TUICord is a TUI(Text-based user interface) created to run a discord client
+directly by your terminal.
 
 ![TUICord Screenshot](img.png)
 
-## Recursos
+## :sparkles: Resources
 
-- Acesso ao Discord a partir do terminal.
-- Envio e recebimento de mensagens de texto.
-- Listagem de canais disponíveis.
-- Interface de usuário simples e intuitiva.
+- Easily access to Discord from your terminal.
+- Sending and receiving text messages.
+- Simple and intuitive user interface
 
 ---
 
-## Instalação
+## 💻 Installation
 
-Você pode instalar o TUICord facilmente usando o pip. Abra um terminal e digite
-o seguinte comando:
+First of all, you need clone this repo into you system:
 
 ````bash
-pip install tuicord
+git clone https://github.com/Robert-Nogueira/TUICord.git
 ````
 
-Com isso, o TUICord e suas dependências serão instalados no seu ambiente
-Python.
+Now you need install the source as a package in your system,
+you can make it using pip, a python package manager.
+
+````bash
+pip install --user TUICord
+````
+
+But I sincerely recommend you use pipx,
+this will ensure a clean and isolated installation.
+
+````bash
+pipx install tuicord
+````
 
 Certifique-se de ter o Python 3.9 ou acima instalado
+
+Make sure you have a Python 3.9 or above and pip (or pipx) installed.
 ___
 
-## Uso
+## 😎 Basic Use
 
 Para iniciar o TUICord, basta executar o seguinte comando no terminal:
+to start TUICord, just type the command bellow in your console:
 
 ````bash
-tuicord run --token SEU_TOKEN_AQUI
+tuicord run --token Your_ACCOUNT_TOKEN_HERE
 ````
 
-Outra opção é definir uma variável de sistema chamada DISCORD_TOKEN com o seu
-token do Discord. Após definir essa variável, basta executar o comando
-abaixo, e o TUICord utilizará o token fornecido automaticamente, sem a
-necessidade de passar o token toda vez que quiser executar:
+Another option is to set a environment variable called DISCORD_TOKEN with your
+Discord token. After setting this variable, simply execute the command below,
+and TUICord will automatically use the provided token, eliminating the need to
+pass the token every time you want to run it:
 
 ````bash
 tuicord run
 ````
 
-### Como definir a variável de sistema DISCORD_TOKEN:
+## ❔ How define the environment variable:
 
-#### No Windows:
+### :window: Windows:
 
-Abra o Menu Iniciar e pesquise por "Variáveis de Ambiente" e clique em "Editar
-as variáveis de ambiente do sistema".
-Na janela que abrir, clique no botão "Variáveis de Ambiente..." na parte
-inferior direita.
-Na seção "Variáveis do Sistema", clique em "Novo...".
-Digite "DISCORD_TOKEN" no campo "Nome da variável".
-Insira o valor do seu token do Discord no campo "Valor da variável".
-Clique em "OK" para salvar a variável.
+Open the Start Menu and search for 'Environment Variables' and click on 'Edit
+the system environment variables'.
+In the window that opens, click on the 'Environment Variables' button at the
+bottom right.
+In the 'System Variables' section, click on 'New'.
+Type 'DISCORD_TOKEN' in the 'Variable name' field.
+Enter your Discord token in the 'Variable value' field.
+Click 'OK' to save the variable.
 
-ou vocè pode simplesmente abrir o terminal e usar o
-comando `setx DISCORD_TOKEN "SEU_TOKEN_AQUI"`
+Alternatively, you can simply open the terminal and use the command setx
+DISCORD_TOKEN "YOUR_TOKEN_HERE".
 
-#### No Linux (e outros sistemas baseados em Unix):
+### :penguin: Any Linux distro:
 
-No terminal, digite o seguinte comando para definir a variável de ambiente
-temporariamente:
+In the terminal, type the following command to set the environment variable
+temporarily:
 
 ````bash
-export DISCORD_TOKEN=SEU_TOKEN_AQUI
+export DISCORD_TOKEN=YOUR_TOKEN_HERE
 ````
-Para tornar essa definição permanente, você pode adicionar o comando acima ao
-seu arquivo de perfil, como ~/.bashrc, ~/.bash_profile, ~/.zshrc, ou outro
-arquivo adequado de acordo com a sua configuração do shell.
 
-Após definir a variável de sistema ou passar o token como parâmetro, o TUICord
-estará pronto para uso!
+To make this setting permanent, you can add the above command to your profile
+file, such as `~/.bashrc`, `~/.bash_profile`, `~/.zshrc`, or another
+appropriate file
+according to your shell configuration.
 
-#### :warning: Nota Importante!
+After setting the system variable or passing the token as a parameter, TUICord
+will be ready for use!
 
-Por favor, tenha em mente que o token do Discord é uma credencial de autenticação sensível e confidencial. Não compartilhe o token com ninguém que você não confie plenamente. 
+## :warning: Important Note!
+
+Please keep in mind that the Discord token is a sensitive and confidential
+authentication credential. Do not share the token with anyone you do not fully
+trust.
+---
+
+## 👨‍💻 Contributing
+
+Contributions are welcome! If you would like to contribute to this project,
+please follow the steps below:
+
+- Fork this repository to your own account.
+- Create a branch for your feature or fix: `git checkout -b my-feature`
+- Use the `poetry install .` command to install all needed dependencies (you
+  need to have poetry installed).
+- Make the desired changes and add
+  commits: `git commit -m 'Adding new feature'`
+- You need to use the `task lint` command before each commit to maintain the
+  standardization of clean and readable code.
+- To run the program use `poetry run tuicord`.
+- Push the changes to the repository on GitHub: `git push origin my-feature`
+- Open a Pull Request so we can review your changes.
 
 ---
 
-## Contribuindo
-Contribuições são bem-vindas! Se você quiser contribuir com este projeto, por favor, siga as etapas abaixo:
+## :scroll: License
 
-- Fork este repositório para a sua própria conta.
-- Crie um branch para a sua funcionalidade ou correção: git checkout -b minha-funcionalidade
-- Faça as alterações desejadas e adicione os commits: git commit -m 'Adicionando nova funcionalidade'
-- Empurre as alterações para o repositório no GitHub: git push origin minha-funcionalidade
-- Abra um Pull Request para que possamos revisar suas alterações.
-
----
-
-## Licença
-Este projeto é licenciado sob a licença MIT - veja o arquivo LICENSE para mais detalhes
-
-
+This project is licensed under the MIT License - see the LICENSE file for more
+details.
