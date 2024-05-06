@@ -46,7 +46,7 @@ ___
 To start TUICord, just type the command bellow in your console:
 
 ````bash
-tuicord run --token Your_ACCOUNT_TOKEN_HERE
+tuicord --token Your_ACCOUNT_TOKEN_HERE
 ````
 
 Another option is to set a environment variable called DISCORD_TOKEN with your
@@ -55,7 +55,7 @@ and TUICord will automatically use the provided token, eliminating the need to
 pass the token every time you want to run it:
 
 ````bash
-tuicord run
+tuicord
 ````
 
 ## ❔ How define the environment variable:
