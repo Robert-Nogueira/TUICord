@@ -1,6 +1,7 @@
 import asyncio
 
 import discord
+import humanize
 from discord import ChannelType
 from textual import on
 from textual.widget import Widget
@@ -73,10 +74,12 @@ class ChannelsTree(Tree):
                     consume_history(channel), loop=self.app.client.loop
                 ).result()
                 for message in messages:
+                    message_date = humanize.naturaldate(message.created_at)
                     await message_list_view.append(
                         ListItem(
                             ChannelMessage(
                                 channel,
+                                f'[{message_date}]'
                                 f'[{message.author.color}] '
                                 f'{message.author.name}[/]: {message.content}',
                             )

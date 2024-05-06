@@ -3,7 +3,9 @@ from textual.widgets import Label
 
 
 class ChannelMessage(Label):
-    def __init__(self, channel: discord.TextChannel, *args, **kwargs):
+    def __init__(
+        self, channel: discord.TextChannel, content: str, *args, **kwargs
+    ):
         """
         The __init__ function is called when the class is instantiated.
         It sets up the object with all of its attributes and behaviors.
@@ -21,4 +23,5 @@ class ChannelMessage(Label):
         """
         self.channel = channel
         self.channel_id = channel.id
-        super(ChannelMessage, self).__init__(*args, **kwargs)
+        self.content = content
+        super(ChannelMessage, self).__init__(content, *args, **kwargs)

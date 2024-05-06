@@ -12,6 +12,8 @@ discord-py-self = {git = "https://github.com/dolfies/discord.py-self"}
 textual-dev = "^1.0.1"
 python-dotenv = "^1.0.0"
 click = "^8.1.6"
+rich = "^13.7.1"
+humanize = "^4.9.0"
 
 [tool.poetry.scripts]
 tuicord = "tuicord.main:cli"
