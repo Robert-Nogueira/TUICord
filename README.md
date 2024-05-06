@@ -28,14 +28,14 @@ Now you need install the source as a package in your system,
 you can make it using pip, a python package manager.
 
 ````bash
-pip install --user TUICord
+pip install --user ./TUICord
 ````
 
 But I sincerely recommend you use pipx,
 this will ensure a clean and isolated installation.
 
 ````bash
-pipx install tuicord
+pipx install ./TUICord
 ````
 
 Certifique-se de ter o Python 3.9 ou acima instalado
